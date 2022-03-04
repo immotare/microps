@@ -206,12 +206,8 @@ ip_input(const uint8_t *data, size_t len, struct net_device *dev)
     // IPv4
     iface = (struct ip_iface *)net_device_get_iface(dev, NET_IFACE_FAMILY_IP);
     if (!iface) {
-        // IPv6
-        iface = (struct ip_iface *)net_device_get_iface(dev, NET_IFACE_FAMILY_IPV6);
-        if (!iface) {
-            errorf("device has no ip interface");
-            return;
-        }
+        errorf("device has no ip interface");
+        return;
     }
 
     // 宛先IPアドレスのチェック
