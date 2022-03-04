@@ -8,6 +8,7 @@
 #include "util.h"
 #include "net.h"
 #include "ip.h"
+#include "icmp.h"
 
 struct net_protocol {
     struct net_protocol *next;
@@ -257,5 +258,7 @@ net_init(void)
         return -1;
     }
     infof("initialized");
+
+    icmp_init();
     return 0;
 }

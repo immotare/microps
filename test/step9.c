@@ -73,7 +73,7 @@ main(int argc, char *argv[])
     dst = src;
 
     while (!terminate) {
-        if (ip_output(1, test_data + offset, sizeof(test_data) - offset, src, dst) == -1) {
+        if (ip_output(IP_PROTOCOL_ICMP, test_data + offset, sizeof(test_data) - offset, src, dst) == -1) {
             errorf("ip_output() failure");
             break;
         }
