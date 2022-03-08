@@ -11,6 +11,7 @@
 #include "ip.h"
 #include "icmp.h"
 #include "arp.h"
+#include "udp.h"
 
 struct net_protocol {
     struct net_protocol *next;
@@ -315,5 +316,6 @@ net_init(void)
     infof("initialized");
 
     icmp_init();
+    udp_init();
     return 0;
 }

@@ -133,7 +133,7 @@ icmp_output(uint8_t type, uint8_t code, uint32_t values, const uint8_t *data, si
     hdr->sum = 0;
     hdr->sum = cksum16((uint16_t *)buf, msg_len, 0);
 
-    debugf("%s -> %s, len=%zu", ip_addr_ntop(src, addr1, sizeof(addr1)), ip_addr_ntop(dst, addr2, sizeof(addr2)), msg_len);
+    debugf("%s => %s, len=%zu", ip_addr_ntop(src, addr1, sizeof(addr1)), ip_addr_ntop(dst, addr2, sizeof(addr2)), msg_len);
     icmp_dump((uint8_t *)hdr, msg_len);
 
     return ip_output(IP_PROTOCOL_ICMP, buf, msg_len, src, dst);
