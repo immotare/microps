@@ -413,7 +413,7 @@ ip_output_core(struct ip_iface *iface, uint8_t protocol, const uint8_t *data, si
 
     hdr->tos = 0;
 
-    total = len + IP_HDR_SIZE_MIN;
+    total = len + sizeof(*hdr);
     hdr->total = hton16(total);
 
     hdr->id = hton16(id);
@@ -430,7 +430,7 @@ ip_output_core(struct ip_iface *iface, uint8_t protocol, const uint8_t *data, si
 
     hdr->sum = cksum16((uint16_t *)hdr, IP_HDR_SIZE_MIN, 0);
 
-    memcpy(buf+IP_HDR_SIZE_MIN, data, len);    
+    memcpy(buf+sizeof(*hdr), data, len);    
 
     debugf("dev=%s, dst=%s, protocol=%u, len=%u", NET_IFACE(iface)->dev->name, ip_addr_ntop(dst, addr, sizeof(addr)), protocol, total);
     ip_dump(buf, total);

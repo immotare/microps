@@ -103,7 +103,7 @@ arp_cache_delete(struct arp_cache *cache)
     char addr1[IP_ADDR_STR_LEN];
     char addr2[ETHER_ADDR_STR_LEN];
 
-    debugf("DELTER: pa=%s, ha=%s", ip_addr_ntop(cache->pa, addr1, sizeof(addr1)), ether_addr_ntop(cache->ha, addr2, sizeof(addr2)));
+    debugf("DELETE: pa=%s, ha=%s", ip_addr_ntop(cache->pa, addr1, sizeof(addr1)), ether_addr_ntop(cache->ha, addr2, sizeof(addr2)));
 
     cache->state = ARP_CACHE_STATE_FREE;
     cache->pa = 0;
